@@ -251,10 +251,6 @@ header {
     margin: 2rem auto 0 auto;
 }
 
-.solucion-img img:hover {
-    transform: scale(1.02);
-}
-
 .solucion-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
