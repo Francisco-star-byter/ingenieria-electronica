@@ -267,29 +267,43 @@
 
         <section class="contacto" id="cotizar">
             <div class="form-container">
-
                 <h2>Solicita tu cotización</h2>
                 <p>Cuéntanos qué necesitas y te responderemos lo antes posible.</p>
 
-                <form>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required autocomplete="name">
+                    </div>
 
-                    <input type="text" placeholder="Nombre completo" required>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="300 123 4567" required autocomplete="tel">
+                    </div>
 
-                    <input type="tel" placeholder="Número de teléfono" required>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required autocomplete="email">
+                    </div>
 
-                    <input type="email" placeholder="Correo electronico" required>
+                    <div class="form-group">
+                        <label for="servicio">Servicio</label>
+                        <select id="servicio" name="servicio" required>
+                            <option value="" disabled selected>Selecciona un servicio</option>
+                            <option value="redes">Redes eléctricas</option>
+                            <option value="transformadores">Transformadores</option>
+                            <option value="mantenimiento">Mantenimiento</option>
+                            <option value="motores">Motores eléctricos</option>
+                            <option value="ingenieria">Diseño electrico</option>
+                            <option value="instalaciones">Instalaciones</option>
+                        </select>
+                    </div>
 
-                    <select required>
-                        <option value="">Selecciona un servicio</option>
-                        <option>Redes eléctricas</option>
-                        <option>Transformadores</option>
-                        <option>Mantenimiento</option>
-                        <option>Motores eléctricos</option>
-                        <option>Ingeniería</option>
-                        <option>Instalaciones</option>
-                    </select>
+                    <div class="form-group">
+                        <label for="mensaje">Cuentanos sobre tu proyecto</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Escribe aqui....." rows="4"></textarea>
+                    </div>
 
-                    <textarea placeholder="Cuéntanos sobre tu proyecto..." rows="4"></textarea>
                     <button type="submit" class="cta-form">Solicitar cotización</button>
                 </form>
             </div>
