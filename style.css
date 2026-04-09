@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 :root {
     --color-cta: #0a369d;
@@ -26,9 +25,10 @@ html {
 }
 
 body {
-   font-family: 'poppins', sans-serif;
+   font-family: sans-serif;
    margin: 0;
    position: relative;
+   width: 100%;
 }
 
 /*--------NAVBAR-----*/
@@ -103,6 +103,7 @@ header {
 .hero-section {
     padding: 80px 20px;
     margin: 0 auto;
+    width: 100%;
     height: 100dvh;
 
     background: url('sieecfondo.avif');
@@ -170,7 +171,6 @@ header {
     padding: 10px 20px;
     border-radius: 50px; /* Forma de píldora */
     margin-bottom: 20px;
-    animation: float 3s ease-in-out infinite; /* Animación de levitación */
 }
 
 .icono-sello {
@@ -189,12 +189,6 @@ header {
     color: var(--cta-hover); /* Dorado para resaltar las normas */
 }
 
-/* Animación para que el sello "flote" suavemente */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-    100% { transform: translateY(0px); }
-}
 
 /* Ajuste para móviles */
 @media (max-width: 768px) {
@@ -209,6 +203,7 @@ header {
 .solucion-section {
     padding: 100px 20px;
     margin: 80px 0;
+
 }
 
 .solucion-container {
@@ -217,7 +212,8 @@ header {
     justify-content: center;
     text-align: left;
     gap: 1rem;
-    max-width: 1300px;
+    max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
     align-items: center;
 }
@@ -228,12 +224,11 @@ header {
     gap: 2rem;
     max-width: 500px;
     text-align: left;
-    margin-right: 2rem;
 }
 
 .titulito {
     color: #666;
-    letter-spacing: 1rem;
+    letter-spacing: 0.3rem; 
     text-align: left;
 }
 
@@ -249,13 +244,11 @@ header {
 }
 
 .solucion-img img {
-    display: flex;
-    justify-content: center;
-    text-align: left;
-    max-width: 450px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    margin-top: 2rem;
+    width: 100%;
+    max-width: 390px;
+    height: auto;
+    display: block;
+    margin: 2rem auto 0 auto;
 }
 
 .solucion-img img:hover {
@@ -281,14 +274,14 @@ header {
 }
 
 .card {
-    width: 180px;
+    width: 100%; 
+    min-width: 0; 
     margin: 0;
     border: 1px solid var(--gris);
     border-radius: 5px;
     padding: 20px;
     transition: all 0.3s ease;
 }
-
 .card:hover {
     transform: translateY(-10px);
 }
@@ -305,6 +298,14 @@ header {
         gap: 2rem;
     }
 
+    .solucion-text {
+        margin-right: 2rem; 
+    }
+
+    .titulito {
+        letter-spacing: 1rem; 
+    }
+
 }
 
 
@@ -314,6 +315,7 @@ header {
 .servicios-section {
     padding: 80px 20px;
     margin: 40px 0px;
+    width: 100%;
     text-align: center;
 }
 
@@ -538,7 +540,7 @@ header {
 .gallery-container {
     padding: 100px 20px 20px 20px;
     background-color: var(--blanco);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 }
 
@@ -556,6 +558,7 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -629,7 +632,7 @@ header {
 .stats-container {
     display: grid;
     /* Crea 4 columnas iguales que se ajustan al ancho disponible */
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(3, 1fr); 
     gap: 10px;
     max-width: 1100px;
     margin: 0 auto;
@@ -695,6 +698,7 @@ header {
 }
 
 .about-container {
+    width: 100%;
     max-width: 1100px;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -798,53 +802,71 @@ header {
 
 /*-----formulario-------*/
 
-/* SECCIÓN */
 .contacto {
-    padding: 120px 20px;
+    padding: 80px 20px 120px 20px;
     margin-bottom: 3rem;
     background: #fff;
     display: flex;
     justify-content: center;
 }
 
-/* CONTENEDOR */
 .form-container {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     background: var(--color-fondo);
-    padding: 25px;
+    padding: 30px; /* Un poco más de aire */
     border-radius: 12px;
     text-align: center;
 }
 
-/* TEXTOS */
 .form-container h2 {
     margin-bottom: 10px;
-    color: var(--cta-hover);
+    color: var(--color-cta); /* Usando tu variable principal */
 }
 
 .form-container p {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-size: 14px;
     color: #444;
 }
 
-/* FORM */
-form {
+/* Contenedor individual para Label + Input */
+.form-group {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    text-align: left; /* Label siempre a la izquierda */
+    margin-bottom: 15px;
+    gap: 8px; /* Espacio entre label e input */
 }
 
-/* INPUTS */
+/* Estilo de los Labels (Accesibilidad) */
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-cta);
+    margin-left: 4px;
+}
+
+/* Inputs, Select y Textarea */
 input,
 select,
 textarea {
     padding: 12px;
     border-radius: 8px;
-    border: none;
+    border: 2px solid transparent; /* Para que no salte al poner focus */
     font-size: 14px;
     outline: none;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al hacer clic en un campo */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--cta-hover);
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(10, 54, 157, 0.1);
 }
 
 textarea {
@@ -852,25 +874,32 @@ textarea {
     min-height: 100px;
 }
 
-/* BOTÓN */
+/* BOTÓN (Diseño reforzado) */
 .cta-form {
     background: var(--color-cta);
     color: #fff;
-    padding: 12px;
+    padding: 14px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(10, 54, 157, 0.2);
 }
 
 .cta-form:hover {
     background: var(--cta-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(10, 54, 157, 0.3);
 }
 
-
-
-
+.cta-form:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(10, 54, 157, 0.2);
+}
 
 /*--------footer---------*/
 
@@ -1038,3 +1067,4 @@ textarea {
         height: 30px;
     }
 }
+
