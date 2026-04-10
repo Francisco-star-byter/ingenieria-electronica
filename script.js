@@ -69,24 +69,25 @@ document.addEventListener("DOMContentLoaded", function() {
         card.style.transition = "all 0.6s ease-out";
         observer.observe(card);
 
-        // --- Lógica de Clic Corregida ---
+        // --- Lógica de Clic Mejorada ---
         card.addEventListener('click', function(e) {
-            // Evitamos que el clic se propague al documento inmediatamente
+            // Esto evita que el clic "atraviese" la tarjeta y llegue al fondo (document)
             e.stopPropagation();
 
-            const isOpened = this.classList.contains('active');
+            // Si la tarjeta ya tiene 'active', se la quita. Si no, se la pone.
+            const wasActive = this.classList.contains('active');
 
-            // Cerramos todas las demás
+            // Primero cerramos todas las tarjetas para que solo haya una abierta
             cards.forEach(c => c.classList.remove('active'));
 
-            // Si no estaba abierta, la abrimos
-            if (!isOpened) {
+            // Si la tarjeta NO estaba activa antes del clic, ahora la activamos
+            if (!wasActive) {
                 this.classList.add('active');
             }
         });
     });
 
-    // Si hacen clic en cualquier parte vacía de la página, se cierra el texto
+    // Cerrar si hacen clic afuera de cualquier tarjeta
     document.addEventListener('click', function() {
         cards.forEach(c => c.classList.remove('active'));
     });
