@@ -598,14 +598,14 @@ header {
 }
 
 .text {
-    color: white;
+    color: #eee;
     padding: 20px;
     text-align: center;
 }
 
 .text h3 {
     margin-bottom: 10px;
-    color: var(--azul-claro);
+    color: var(--white);
 }
 
 /* Responsividad para móviles */
