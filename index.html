@@ -270,7 +270,7 @@
                 <h2>Solicita tu cotización</h2>
                 <p>Cuéntanos qué necesitas y te responderemos lo antes posible.</p>
 
-                <form action="#" method="POST">
+                <form id="my-form" action="https://formspree.io/f/xwvwgeky" method="POST">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="nombre" placeholder="Nombre" required autocomplete="name">
@@ -308,6 +308,13 @@
                 </form>
             </div>
         </section>
+
+        <div id="toast-success" class="toast">
+            <div class="toast-content">
+                <span>✅</span>
+                <p>¡Enviado con éxito! Tu información ha sido borrada del formulario.</p>
+            </div>
+        </div>
 
 
         <footer class="main-footer">
