@@ -588,6 +588,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
 }
 
 .project-card:hover .overlay,
@@ -597,13 +598,20 @@ header {
 
 .project-card:hover img,
 .project-card.active img {
-    transform: scale(1.1);
+    transform: scale(1.1) !important;
+}
+
+.project-card.active .overlay {
+    height: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .text {
     color: #eee;
     padding: 20px;
     text-align: center;
+    pointer-events: auto;
 }
 
 .text h3 {
