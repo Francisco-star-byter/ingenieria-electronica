@@ -79,3 +79,38 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.observe(card);
     });
 });
+
+
+const form = document.getElementById("my-form");
+const toast = document.getElementById("toast-success");
+
+form.addEventListener("submit", async function(event) {
+    event.preventDefault(); // Evita que Formspree te saque de tu web
+
+    const data = new FormData(event.target);
+
+    // Enviar a Formspree usando Fetch
+    const response = await fetch(event.target.action, {
+        method: 'POST',
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        // 1. Borrar la información del formulario (Reset)
+        form.reset();
+
+        // 2. Mostrar el mensaje de éxito
+        toast.classList.add("show");
+
+        // 3. Quitar el mensaje después de que termine la animación (4s)
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 4000);
+
+    } else {
+        alert("Ops! Hubo un problema al enviar el formulario.");
+    }
+});
