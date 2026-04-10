@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener("DOMContentLoaded", function() {
     const cards = document.querySelectorAll('.project-card');
     
-    // --- Tu lógica de entrada (Intersection Observer) ---
+    // Tu lógica de entrada (Observer) se mantiene igual
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -68,25 +68,23 @@ document.addEventListener("DOMContentLoaded", function() {
         card.style.transition = "all 0.6s ease-out";
         observer.observe(card);
 
-        // --- Lógica para Celular y PC ---
+        // Lógica de clic/toque
         card.addEventListener('click', function(e) {
-            // Evita que el clic se propague al fondo
-            e.preventDefault(); 
-            e.stopPropagation();
-
-            const isOpened = this.classList.contains('active');
-
-            // Cerramos todas las demás tarjetas
+            e.stopPropagation(); // Evita que el clic llegue al document
+            
+            const isActive = this.classList.contains('active');
+            
+            // Cerramos todas las demás primero
             cards.forEach(c => c.classList.remove('active'));
-
-            // Si no estaba abierta, la abrimos
-            if (!isOpened) {
+            
+            // Si la que tocamos no estaba activa, la activamos
+            if (!isActive) {
                 this.classList.add('active');
             }
         });
     });
 
-    // Cerrar al tocar fuera (en el body/fondo)
+    // Si tocan cualquier otra parte, se cierra el texto
     document.addEventListener('click', function() {
         cards.forEach(c => c.classList.remove('active'));
     });
