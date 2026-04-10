@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener("DOMContentLoaded", function() {
     const cards = document.querySelectorAll('.project-card');
     
+    // --- Tu lógica de entrada (Observer) ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -62,9 +63,32 @@ document.addEventListener("DOMContentLoaded", function() {
     }, { threshold: 0.1 });
 
     cards.forEach(card => {
+        // Estilos iniciales para la animación de entrada
         card.style.opacity = 0;
         card.style.transform = "translateY(30px)";
         card.style.transition = "all 0.6s ease-out";
         observer.observe(card);
+
+        // --- Nueva lógica: Click para mostrar/ocultar texto ---
+        card.addEventListener('click', function() {
+            // Verificamos si esta tarjeta ya tiene el texto visible
+            const isOpened = this.classList.contains('active');
+
+            // Cerramos cualquier otra tarjeta que esté abierta (limpieza visual)
+            cards.forEach(c => c.classList.remove('active'));
+
+            // Si no estaba abierta, la abrimos
+            if (!isOpened) {
+                this.classList.add('active');
+            }
+            // Si ya estaba abierta, se cerró con el remove de arriba
+        });
+    });
+
+    // Cerrar el texto si el usuario hace clic en cualquier otra parte de la página
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.project-card')) {
+            cards.forEach(c => c.classList.remove('active'));
+        }
     });
 });
