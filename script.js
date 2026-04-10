@@ -63,31 +63,30 @@ document.addEventListener("DOMContentLoaded", function() {
     }, { threshold: 0.1 });
 
     cards.forEach(card => {
-        // Estilos iniciales de animación
         card.style.opacity = 0;
         card.style.transform = "translateY(30px)";
         card.style.transition = "all 0.6s ease-out";
         observer.observe(card);
 
-        // --- Lógica de Clic Mejorada ---
+        // --- Lógica para Celular y PC ---
         card.addEventListener('click', function(e) {
-            // Esto evita que el clic "atraviese" la tarjeta y llegue al fondo (document)
+            // Evita que el clic se propague al fondo
+            e.preventDefault(); 
             e.stopPropagation();
 
-            // Si la tarjeta ya tiene 'active', se la quita. Si no, se la pone.
-            const wasActive = this.classList.contains('active');
+            const isOpened = this.classList.contains('active');
 
-            // Primero cerramos todas las tarjetas para que solo haya una abierta
+            // Cerramos todas las demás tarjetas
             cards.forEach(c => c.classList.remove('active'));
 
-            // Si la tarjeta NO estaba activa antes del clic, ahora la activamos
-            if (!wasActive) {
+            // Si no estaba abierta, la abrimos
+            if (!isOpened) {
                 this.classList.add('active');
             }
         });
     });
 
-    // Cerrar si hacen clic afuera de cualquier tarjeta
+    // Cerrar al tocar fuera (en el body/fondo)
     document.addEventListener('click', function() {
         cards.forEach(c => c.classList.remove('active'));
     });
